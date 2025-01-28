@@ -16,4 +16,20 @@ public class TaskManager {
         }
     }
 
+    public boolean removeTask(Task task) {
+        if (task == null) {
+            return false;
+        } else {
+            tasks.remove(task.getTitle());
+            return true;
+        }
+    }
+
+    public Task getTask(String title) {
+        return tasks.get(title);
+    }
+
+    public Map<String, Task> getTasks() {
+        return tasks;
+    }
 }
