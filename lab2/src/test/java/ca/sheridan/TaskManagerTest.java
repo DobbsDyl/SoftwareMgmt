@@ -29,11 +29,11 @@ public class TaskManagerTest {
     
     /*
      * testAddTask: tests successful adding of task to map
-     * testAddDuplicateBook: tests that adding a duplicate task will not work
+     * testAddDuplicateTask: tests that adding a duplicate task will not work
      * testAddNullTask: tests that adding a null task will not work
      */
     @Nested
-    class AddBookTests {
+    class AddTaskTests {
 
         @Test
         public void testAddTask() {
@@ -47,7 +47,7 @@ public class TaskManagerTest {
         }
     
         @Test
-        public void testAddDuplicateBook() {
+        public void testAddDuplicateTask() {
             TaskManager taskManager = new TaskManager();
             Task task = new Task(1, "Task 1", "Description 1", 
                 false, LocalDateTime.of(2025, 1, 1, 12, 0));
@@ -70,7 +70,7 @@ public class TaskManagerTest {
      * testRemoveNonExistentTask: tests that removing a non-existent task is handled
      */
     @Nested
-    class RemoveBookTests{
+    class RemoveTaskTests{
 
         @Test
         public void testRemoveTask() {
@@ -99,7 +99,7 @@ public class TaskManagerTest {
      * testUpdateTaskEmpty: tests updateTask with empty title, desc will not change values
      */
     @Nested
-    class UpdateBookTests {
+    class UpdateTaskTests {
 
         @Test
         public void testUpdateTask() {
