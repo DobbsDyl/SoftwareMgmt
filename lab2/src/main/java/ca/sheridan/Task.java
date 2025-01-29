@@ -1,6 +1,7 @@
 package ca.sheridan;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Task {
     private int id;
@@ -11,10 +12,22 @@ public class Task {
 
     public Task(int id, String title, String description, boolean done, LocalDateTime dueDate) {
         this.id = id;
-        this.title = title;
-        this.description = description;
         this.done = done;
-        this.dueDate = dueDate;
+
+        if (title != null && !title.trim().isEmpty()) 
+            this.title = title;
+        else
+            this.title = "Task";
+        
+        if (description != null && !description.trim().isEmpty()) 
+            this.description = description;
+        else
+            this.description = "Description";
+
+        if (dueDate != null) 
+            this.dueDate = dueDate;
+        else
+            this.dueDate = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS); 
     }
 
     public int getId() {
@@ -30,7 +43,9 @@ public class Task {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (title != null && !title.trim().isEmpty()) {
+            this.title = title;
+        }
     }
 
     public String getDescription() {
@@ -38,7 +53,9 @@ public class Task {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        if (description != null && !description.trim().isEmpty()) {
+            this.description = description;
+        }
     }
 
     public boolean isDone() {
@@ -54,8 +71,8 @@ public class Task {
     }
 
     public void setDueDate(LocalDateTime dueDate) {
-        this.dueDate = dueDate;
+        if (dueDate != null) {
+            this.dueDate = dueDate;
+        }
     }
-
-    
 }
