@@ -42,7 +42,10 @@ public class TaskManager {
     }
 
     public Task getTask(Integer id) {
-        return tasks.get(id);
+        if (tasks.containsKey(id)) {
+            return tasks.get(id);
+        }
+        return null;
     }
 
     public Map<Integer, Task> getTasks() {
