@@ -40,8 +40,8 @@ public class TaskManagerTest {
             TaskManager taskManager = new TaskManager();
             Task task = new Task(1, "Task 1", "Description 1", 
                 false, LocalDateTime.of(2025, 1, 1, 12, 0));
-            taskManager.addTask(task);
-    
+
+            assertTrue(taskManager.addTask(task));
             assertEquals(1, taskManager.getTasks().size());   
             assertEquals(task, taskManager.getTask(task.getId()));      
         }
@@ -107,8 +107,8 @@ public class TaskManagerTest {
             Task task = new Task(1, "Task 1", "Description 1", 
                 false, LocalDateTime.of(2025, 1, 1, 12, 0));
             taskManager.addTask(task);
-    
             taskManager.updateTask(1, "Task 2", "Description 2", LocalDateTime.of(2025, 2, 2, 12, 0));
+
             assertEquals("Task 2", taskManager.getTask(1).getTitle());
             assertEquals("Description 2", taskManager.getTask(1).getDescription());
             assertEquals(LocalDateTime.of(2025, 2, 2, 12, 0), taskManager.getTask(1).getDueDate());
@@ -120,8 +120,8 @@ public class TaskManagerTest {
             Task task = new Task(1, "Task 1", "Description 1", 
                 false, LocalDateTime.of(2025, 1, 1, 12, 0));
             taskManager.addTask(task);
-    
             taskManager.updateTask(1, null, null, null);
+
             assertEquals(task.toString(), taskManager.getTask(1).toString());
         }
     
@@ -131,8 +131,8 @@ public class TaskManagerTest {
             Task task = new Task(1, "Task 1", "Description 1", 
                 false, LocalDateTime.of(2025, 1, 1, 12, 0));
             taskManager.addTask(task);
-    
             taskManager.updateTask(1, "  ", "", null);
+
             assertEquals(task.toString(), taskManager.getTask(1).toString());
         }
     }
@@ -150,8 +150,8 @@ public class TaskManagerTest {
             Task task = new Task(1, "Task 1", "Description 1", 
                 false, LocalDateTime.of(2025, 1, 1, 12, 0));
             taskManager.addTask(task);
-
             taskManager.toggleCompletion(task);
+
             assertTrue(taskManager.getTask(1).isDone());
         }
 
@@ -161,8 +161,8 @@ public class TaskManagerTest {
             Task task = new Task(1, "Task 1", "Description 1", 
                 true, LocalDateTime.of(2025, 1, 1, 12, 0));
             taskManager.addTask(task);
-
             taskManager.toggleCompletion(task);
+            
             assertFalse(taskManager.getTask(1).isDone());
         }
     }
